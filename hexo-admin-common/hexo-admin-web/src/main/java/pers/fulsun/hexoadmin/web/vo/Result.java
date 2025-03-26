@@ -28,4 +28,13 @@ public class Result<T> {
      * 数据，可以是任何类型的VO
      */
     private T data;
+
+    public static <T> Result<T> success(T data) {
+        Result result = new Result<>();
+        result.setSuccess(true);
+        result.setCode("200");
+        result.setMessage("success");
+        result.setData(data);
+        return result;
+    }
 }

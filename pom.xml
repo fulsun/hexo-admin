@@ -15,6 +15,9 @@
         <module>hexo-admin-common</module>
         <module>hexo-admin-common/hexo-admin-base</module>
         <module>hexo-admin-common/hexo-admin-web</module>
+        <module>hexo-admin-common/hexo-admin-api</module>
+        <module>hexo-admin-business</module>
+        <module>hexo-admin-business/hexo-admin-user</module>
     </modules>
 
     <properties>
@@ -40,23 +43,39 @@
             <dependency>
                 <groupId>pers.fulsun</groupId>
                 <artifactId>hexo-admin-auth</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>pers.fulsun</groupId>
                 <artifactId>hexo-admin-common</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>pers.fulsun</groupId>
                 <artifactId>hexo-admin-web</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>pers.fulsun</groupId>
                 <artifactId>hexo-admin-base</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>pers.fulsun</groupId>
+                <artifactId>hexo-admin-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>pers.fulsun</groupId>
+                <artifactId>hexo-admin-business</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>pers.fulsun</groupId>
+                <artifactId>hexo-admin-user</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

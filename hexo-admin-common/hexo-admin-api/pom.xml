@@ -5,29 +5,22 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>pers.fulsun</groupId>
-        <artifactId>hexo-admin</artifactId>
+        <artifactId>hexo-admin-common</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>pers.fulsun</groupId>
-    <artifactId>hexo-admin-auth</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>hexo-admin-api</artifactId>
 
     <properties>
-        <application.name>hexo-admin-auth</application.name>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>pers.fulsun</groupId>
-            <artifactId>hexo-admin-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>pers.fulsun</groupId>
-            <artifactId>hexo-admin-api</artifactId>
+            <artifactId>hexo-admin-base</artifactId>
         </dependency>
     </dependencies>
+
 </project>
