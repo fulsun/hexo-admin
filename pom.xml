@@ -18,6 +18,7 @@
         <module>hexo-admin-common/hexo-admin-api</module>
         <module>hexo-admin-business</module>
         <module>hexo-admin-business/hexo-admin-user</module>
+        <module>hexo-admin-common/hexo-admin-datasource</module>
     </modules>
 
     <properties>
@@ -34,11 +35,6 @@
                 <version>3.4.4</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.mysql</groupId>
-                <artifactId>mysql-connector-j</artifactId>
-                <version>8.3.0</version>
             </dependency>
             <dependency>
                 <groupId>pers.fulsun</groupId>
@@ -75,7 +71,33 @@
                 <artifactId>hexo-admin-user</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>pers.fulsun</groupId>
+                <artifactId>hexo-admin-datasource</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>3.0.3</version>
+            </dependency>
+            <!--     Mybatis Plus    -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+                <version>3.5.5</version>
+            </dependency>
+            <!-- MyBatis-Plus Generator -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>3.5.5</version>
+            </dependency>
+            <dependency>
+                <groupId>com.mysql</groupId>
+                <artifactId>mysql-connector-j</artifactId>
+                <version>8.3.0</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
