@@ -14,6 +14,7 @@
         <module>hexo-admin-auth</module>
         <module>hexo-admin-common</module>
         <module>hexo-admin-business</module>
+        <module>hexo-admin-app</module>
     </modules>
 
     <properties>
