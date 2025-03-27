@@ -5,13 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>pers.fulsun</groupId>
-        <artifactId>hexo-admin</artifactId>
+        <artifactId>hexo-admin-common</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>pers.fulsun</groupId>
-    <artifactId>hexo-admin-auth</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>hexo-admin-opendoc</artifactId>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -21,18 +19,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>pers.fulsun</groupId>
-            <artifactId>hexo-admin-user</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>pers.fulsun</groupId>
-            <artifactId>hexo-admin-datasource</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>pers.fulsun</groupId>
-            <artifactId>hexo-admin-opendoc</artifactId>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
         </dependency>
     </dependencies>
-
 
 </project>

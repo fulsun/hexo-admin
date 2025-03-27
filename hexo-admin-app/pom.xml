@@ -23,7 +23,6 @@
         <dependency>
             <groupId>pers.fulsun</groupId>
             <artifactId>hexo-admin-auth</artifactId>
-            <version>${project.version}</version>
         </dependency>
     </dependencies>
 

@@ -18,6 +18,7 @@
         <module>hexo-admin-web</module>
         <module>hexo-admin-api</module>
         <module>hexo-admin-datasource</module>
+        <module>hexo-admin-opendoc</module>
     </modules>
 
     <properties>

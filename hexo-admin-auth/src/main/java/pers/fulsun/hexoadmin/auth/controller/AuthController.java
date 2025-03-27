@@ -1,5 +1,10 @@
 package pers.fulsun.hexoadmin.auth.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +22,7 @@ import pers.fulsun.hexoadmin.auth.vo.LoginParam;
 import pers.fulsun.hexoadmin.auth.vo.LoginVO;
 import pers.fulsun.hexoadmin.web.vo.Result;
 
+@Tag(name = "AuthController", description = "后台授权管理")
 @RestController
 @RequestMapping("auth")
 @Slf4j
@@ -27,6 +33,8 @@ public class AuthController {
     /**
      * 登录方法
      */
+    @Operation(summary = "用户登录", description = "用户登录")
+    @ApiResponse(responseCode = "200", description = "登录成功", content = @Content(schema = @Schema(implementation = Result.class)))
     @PostMapping("/login")
     public Result<LoginVO> login(@Valid @RequestBody LoginParam loginParam) {
         // 判断是注册还是登陆
