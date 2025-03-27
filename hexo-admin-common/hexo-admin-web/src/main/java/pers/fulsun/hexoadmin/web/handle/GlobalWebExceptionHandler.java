@@ -10,6 +10,7 @@ import pers.fulsun.hexoadmin.web.vo.Result;
 
 @ControllerAdvice
 public class GlobalWebExceptionHandler {
+    
     /**
      * 自定义业务异常处理器
      *
@@ -26,5 +27,5 @@ public class GlobalWebExceptionHandler {
         result.setSuccess(false);
         return result;
     }
-
+    
 }

@@ -8,6 +8,7 @@ import lombok.Setter;
 @Getter
 @Schema(description = "登录参数")
 public class LoginParam extends RegisterParam {
+    
     /**
      * 记住我
      */

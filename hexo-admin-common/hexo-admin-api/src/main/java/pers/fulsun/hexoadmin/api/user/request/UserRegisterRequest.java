@@ -9,11 +9,11 @@ import pers.fulsun.hexoadmin.base.request.BaseRequest;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserRegisterRequest extends BaseRequest {
-
+    
     private String telephone;
-
+    
     private String inviteCode;
-
+    
     private String password;
-
+    
 }

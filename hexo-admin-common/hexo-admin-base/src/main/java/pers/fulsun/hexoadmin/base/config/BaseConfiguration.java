@@ -6,6 +6,7 @@ import pers.fulsun.hexoadmin.base.utils.SpringContextHolder;
 
 @Configuration
 public class BaseConfiguration {
+    
     @Bean
     public SpringContextHolder springContextHolder() {
         return new SpringContextHolder();

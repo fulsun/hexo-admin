@@ -27,9 +27,10 @@ import pers.fulsun.hexoadmin.web.vo.Result;
 @RequestMapping("auth")
 @Slf4j
 public class AuthController {
+    
     @Autowired
     private UserFacadeService userFacadeService;
-
+    
     /**
      * 登录方法
      */
@@ -47,7 +48,7 @@ public class AuthController {
             UserRegisterRequest userRegisterRequest = new UserRegisterRequest();
             userRegisterRequest.setTelephone(loginParam.getTelephone());
             userRegisterRequest.setInviteCode(loginParam.getInviteCode());
-
+            
             UserOperatorResponse response = userFacadeService.register(userRegisterRequest);
             if (response.getSuccess()) {
                 userQueryResponse = userFacadeService.query(userQueryRequest);
@@ -62,5 +63,5 @@ public class AuthController {
             return Result.success(loginVO);
         }
     }
-
+    
 }

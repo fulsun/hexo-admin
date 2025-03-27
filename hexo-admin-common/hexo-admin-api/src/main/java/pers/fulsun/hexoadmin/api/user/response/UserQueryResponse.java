@@ -9,8 +9,8 @@ import pers.fulsun.hexoadmin.base.response.BaseResponse;
 @Getter
 @ToString
 public class UserQueryResponse<T> extends BaseResponse {
-
+    
     private static final long serialVersionUID = 1L;
-
+    
     private T data;
 }

@@ -17,22 +17,24 @@ import static pers.fulsun.hexoadmin.user.infrastructure.exception.UserErrorCode.
 
 @Service
 public class UserService extends ServiceImpl<UserMapper, User> {
+    
     @Autowired
     private UserMapper userMapper;
+    
     private static final String DEFAULT_NICK_NAME_PREFIX = "读者_";
-
+    
     public User findById(Long userId) {
         return userMapper.findById(userId);
     }
-
+    
     public User findByTelephone(String telephone) {
         return userMapper.findByTelephone(telephone);
     }
-
+    
     public User findByTelephoneAndPass(String telephone, String password) {
         return userMapper.findByTelephoneAndPass(telephone, DigestUtil.md5Hex(password));
     }
-
+    
     public UserOperatorResponse register(String telephone, String inviteCode) {
         String defaultNickName;
         String randomString;
@@ -41,7 +43,7 @@ public class UserService extends ServiceImpl<UserMapper, User> {
             // 前缀 + 6位随机数 + 手机号后四位
             defaultNickName = DEFAULT_NICK_NAME_PREFIX + randomString + telephone.substring(7, 11);
         } while (nickNameExist(defaultNickName) & inviteCodeExist(randomString));
-
+        
         String inviterId = null;
         if (StringUtils.isNotBlank(inviteCode)) {
             User inviter = userMapper.findByInviteCode(inviteCode);
@@ -49,21 +51,21 @@ public class UserService extends ServiceImpl<UserMapper, User> {
                 inviterId = inviter.getId().toString();
             }
         }
-
+        
         User user = register(telephone, defaultNickName, telephone, randomString, inviterId);
         Assert.notNull(user, UserErrorCode.USER_OPERATE_FAILED.getCode());
-
+        
         UserOperatorResponse userOperatorResponse = new UserOperatorResponse();
         userOperatorResponse.setSuccess(true);
-
+        
         return userOperatorResponse;
     }
-
+    
     private User register(String telephone, String nickName, String password, String inviteCode, String inviterId) {
         if (userMapper.findByTelephone(telephone) != null) {
             throw new UserException(DUPLICATE_TELEPHONE_NUMBER);
         }
-
+        
         User user = new User();
         user.register(telephone, nickName, password, inviteCode, inviterId);
         if (save(user)) {
@@ -71,12 +73,12 @@ public class UserService extends ServiceImpl<UserMapper, User> {
         }
         return null;
     }
-
-
+    
+    
     public boolean inviteCodeExist(String inviteCode) {
         return userMapper.findByInviteCode(inviteCode) != null;
     }
-
+    
     public boolean nickNameExist(String nickName) {
         return userMapper.findByNickname(nickName) != null;
     }

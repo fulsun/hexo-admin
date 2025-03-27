@@ -11,13 +11,14 @@ import pers.fulsun.hexoadmin.base.request.BaseRequest;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserQueryRequest extends BaseRequest {
+    
     private UserQueryCondition userQueryCondition;
-
+    
     public UserQueryRequest(String telephone) {
         UserPhoneQueryCondition userPhoneQueryCondition = new UserPhoneQueryCondition();
         userPhoneQueryCondition.setTelephone(telephone);
         this.userQueryCondition = userPhoneQueryCondition;
     }
-
-
+    
+    
 }

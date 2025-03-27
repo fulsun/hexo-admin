@@ -6,6 +6,7 @@ import org.apache.ibatis.reflection.MetaObject;
 import java.util.Date;
 
 public class DataObjectHandler implements MetaObjectHandler {
+    
     @Override
     public void insertFill(MetaObject metaObject) {
         this.setFieldValByNameIfNull("gmtCreate", new Date(), metaObject);
@@ -13,13 +14,13 @@ public class DataObjectHandler implements MetaObjectHandler {
         this.setFieldValByName("deleted", 0, metaObject);
         this.setFieldValByName("lockVersion", 0, metaObject);
     }
-
+    
     @Override
     public void updateFill(MetaObject metaObject) {
         this.setFieldValByName("gmtModified", new Date(), metaObject);
     }
-
-
+    
+    
     /**
      * 当没有值的时候再设置属性，如果有值则不设置。主要是方便单元测试
      *

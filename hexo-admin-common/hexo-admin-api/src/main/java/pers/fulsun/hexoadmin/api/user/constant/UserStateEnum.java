@@ -16,15 +16,15 @@ public enum UserStateEnum {
      * 实名认证
      */
     AUTH,
-
+    
     /**
      * 冻结
      */
     FROZEN,
-
+    
     /**
      * 注销
      */
     Deregistration;
-
+    
 }

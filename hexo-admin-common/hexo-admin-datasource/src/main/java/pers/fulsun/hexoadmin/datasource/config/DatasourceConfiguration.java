@@ -24,23 +24,23 @@ import java.sql.Statement;
 @EnableConfigurationProperties(DruidProperties.class)
 @AutoConfigureBefore(DataSourceAutoConfiguration.class)
 public class DatasourceConfiguration {
-
+    
     private final DruidProperties properties;
-
+    
     public DatasourceConfiguration(DruidProperties properties) {
         this.properties = properties;
     }
-
+    
     /**
-     * 数据库字段自动填充
+     * 数据库字段自动填充.
      *
-     * @return
+     * @return DataObjectHandler
      */
     @Bean
     public DataObjectHandler dataObjectHandler() {
         return new DataObjectHandler();
     }
-
+    
     @Bean
     @Primary
     public DataSource dataSource() {
@@ -50,13 +50,13 @@ public class DatasourceConfiguration {
         } catch (SQLException e) {
             throw new RuntimeException("Failed to create database", e);
         }
-
+        
         // 设置基本属性
         datasource.setUrl(properties.getUrl());
         datasource.setUsername(properties.getUsername());
         datasource.setPassword(properties.getPassword());
         datasource.setDriverClassName(properties.getDriverClassName());
-
+        
         // 设置Druid特定属性
         DruidProperties.Druid druid = properties.getDruid();
         datasource.setInitialSize(druid.getInitialSize());
@@ -71,35 +71,33 @@ public class DatasourceConfiguration {
         datasource.setTestOnReturn(druid.isTestOnReturn());
         datasource.setPoolPreparedStatements(druid.isPoolPreparedStatements());
         datasource.setMaxPoolPreparedStatementPerConnectionSize(druid.getMaxPoolPreparedStatementPerConnectionSize());
-
+        
         return datasource;
     }
-
+    
     @Bean
     public Flyway flyway(DataSource dataSource) {
-        return Flyway.configure()
-                .dataSource(dataSource)
-                .locations("classpath:db")
-                .baselineOnMigrate(true)
+        Flyway flyway = Flyway.configure().dataSource(dataSource).locations("classpath:db").baselineOnMigrate(true)
                 .load();
+        flyway.migrate();  // 执行迁移
+        return flyway;     // 返回 Flyway 实例
     }
-
+    
     private void createDatabase() throws SQLException {
         String dbName = extractDatabaseName(properties.getUrl());
         String rootUrl = properties.getUrl().replace("/" + dbName, "/");
         try (Connection conn = DriverManager.getConnection(rootUrl, properties.getUsername(), properties.getPassword());
-             Statement stmt = conn.createStatement()) {
+                Statement stmt = conn.createStatement()) {
             stmt.execute("CREATE DATABASE IF NOT EXISTS `" + dbName + "`");
             log.info("Database '{}' checked/created successfully", dbName);
         }
     }
-
+    
     private String extractDatabaseName(String url) {
         String cleanUrl = url.replaceFirst("jdbc:mysql://", "");
         int slashIndex = cleanUrl.indexOf('/');
         int questionMarkIndex = cleanUrl.indexOf('?');
-        return questionMarkIndex == -1
-                ? cleanUrl.substring(slashIndex + 1)
+        return questionMarkIndex == -1 ? cleanUrl.substring(slashIndex + 1)
                 : cleanUrl.substring(slashIndex + 1, questionMarkIndex);
     }
 }

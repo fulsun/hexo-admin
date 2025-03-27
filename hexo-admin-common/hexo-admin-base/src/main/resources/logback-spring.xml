@@ -6,9 +6,9 @@
     <property name="LOG_PATH" value="${user.home}/heo-admin/${APP_NAME}/logs"/>
     <property name="LOG_FILE" value="${LOG_PATH}/application.log"/>
     <property name="FILE_LOG_PATTERN" value="%d %-5level [%thread %logger %n"/>
-
+    
     <appender name="APPLICATION"
-              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_FILE}</file>
         <encoder>
             <pattern>${FILE_LOG_PATTERN}</pattern>
@@ -20,14 +20,14 @@
             <totalSizeCap>20GB</totalSizeCap>
         </rollingPolicy>
     </appender>
-
+    
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>${CONSOLE_LOG_PATTERN}</pattern>
             <charset>utf8</charset>
         </encoder>
     </appender>
-
+    
     <root level="INFO">
         <appender-ref ref="APPLICATION"/>
         <appender-ref ref="CONSOLE"/>

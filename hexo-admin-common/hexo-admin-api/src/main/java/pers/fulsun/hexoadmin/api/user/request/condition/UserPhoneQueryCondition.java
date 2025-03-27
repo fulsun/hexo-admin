@@ -8,8 +8,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserPhoneQueryCondition implements UserQueryCondition {
+    
     private static final long serialVersionUID = 1L;
-
+    
     /**
      * 用户手机号
      */

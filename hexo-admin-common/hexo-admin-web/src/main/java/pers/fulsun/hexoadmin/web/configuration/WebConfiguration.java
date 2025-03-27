@@ -9,10 +9,11 @@ import pers.fulsun.hexoadmin.web.handle.GlobalWebExceptionHandler;
 @AutoConfiguration
 @ConditionalOnWebApplication
 public class WebConfiguration {
+    
     @Bean
     @ConditionalOnMissingBean
     GlobalWebExceptionHandler globalWebExceptionHandler() {
         return new GlobalWebExceptionHandler();
     }
-
+    
 }

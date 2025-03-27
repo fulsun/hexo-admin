@@ -6,13 +6,14 @@ package pers.fulsun.hexoadmin.base.exception;
  * @author fulsun
  */
 public interface ErrorCode {
+    
     /**
      * 错误码
      *
      * @return 错误码
      */
     String getCode();
-
+    
     /**
      * 错误信息
      *

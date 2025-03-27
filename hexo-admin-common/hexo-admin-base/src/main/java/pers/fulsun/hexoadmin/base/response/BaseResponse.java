@@ -10,11 +10,12 @@ import java.io.Serializable;
 @Getter
 @ToString
 public class BaseResponse implements Serializable {
+    
     private static final long serialVersionUID = 1L;
-
+    
     private Boolean success;
-
+    
     private String responseCode;
-
+    
     private String responseMessage;
 }

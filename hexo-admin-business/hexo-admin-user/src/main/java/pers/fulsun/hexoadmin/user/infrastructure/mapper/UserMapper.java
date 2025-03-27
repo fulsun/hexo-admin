@@ -11,6 +11,7 @@ import pers.fulsun.hexoadmin.user.domain.entity.User;
  */
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
+    
     /**
      * 根据id查询用户
      *
@@ -18,7 +19,7 @@ public interface UserMapper extends BaseMapper<User> {
      * @return
      */
     User findById(@Param("id") long id);
-
+    
     /**
      * 根据手机号查询用户
      *
@@ -26,7 +27,7 @@ public interface UserMapper extends BaseMapper<User> {
      * @return
      */
     User findByTelephone(@NotNull @Param("telephone") String telephone);
-
+    
     /**
      * 根据昵称和密码查询用户
      *
@@ -35,7 +36,7 @@ public interface UserMapper extends BaseMapper<User> {
      * @return
      */
     User findByTelephoneAndPass(@Param("telephone") String telephone, @Param("passwordHash") String passwordHash);
-
+    
     /**
      * 根据昵称查询用户
      *
@@ -43,7 +44,7 @@ public interface UserMapper extends BaseMapper<User> {
      * @return
      */
     User findByNickname(@NotNull @Param("nickName") String nickname);
-
+    
     /**
      * 根据邀请码查询用户
      *
@@ -51,5 +52,5 @@ public interface UserMapper extends BaseMapper<User> {
      * @return
      */
     User findByInviteCode(@NotNull @Param("inviteCode") String inviteCode);
-
+    
 }

@@ -7,6 +7,7 @@ import pers.fulsun.hexoadmin.api.user.response.UserQueryResponse;
 import pers.fulsun.hexoadmin.api.user.response.data.UserInfo;
 
 public interface UserFacadeService {
+    
     /**
      * 用户信息查询
      *
@@ -14,7 +15,7 @@ public interface UserFacadeService {
      * @return
      */
     UserQueryResponse<UserInfo> query(UserQueryRequest userQueryRequest);
-
+    
     /**
      * 用户注册
      *

@@ -16,9 +16,10 @@ import pers.fulsun.hexoadmin.user.domain.service.UserService;
 
 @Service
 public class UserFacadeServiceImpl implements UserFacadeService {
+    
     @Autowired
     private UserService userService;
-
+    
     @Override
     public UserQueryResponse<UserInfo> query(UserQueryRequest userQueryRequest) {
         User user = switch (userQueryRequest.getUserQueryCondition()) {
@@ -27,13 +28,15 @@ public class UserFacadeServiceImpl implements UserFacadeService {
             case UserPhoneQueryCondition userPhoneQueryCondition:
                 yield userService.findByTelephone(userPhoneQueryCondition.getTelephone());
             case UserPhoneAndPasswordQueryCondition userPhoneAndPasswordQueryCondition:
-                yield userService.findByTelephoneAndPass(userPhoneAndPasswordQueryCondition.getTelephone(), userPhoneAndPasswordQueryCondition.getPassword());
+                yield userService.findByTelephoneAndPass(userPhoneAndPasswordQueryCondition.getTelephone(),
+                        userPhoneAndPasswordQueryCondition.getPassword());
             default:
-                throw new UnsupportedOperationException(userQueryRequest.getUserQueryCondition() + "'' is not supported");
+                throw new UnsupportedOperationException(
+                        userQueryRequest.getUserQueryCondition() + "'' is not supported");
         };
         return null;
     }
-
+    
     @Override
     public UserOperatorResponse register(UserRegisterRequest userRegisterRequest) {
         return userService.register(userRegisterRequest.getTelephone(), userRegisterRequest.getInviteCode());
