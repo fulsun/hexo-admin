@@ -1,6 +1,5 @@
 package pers.fulsun.hexoadmin.user.facade;
 
-import cn.hutool.core.bean.BeanUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pers.fulsun.hexoadmin.api.user.request.UserQueryRequest;
@@ -13,6 +12,7 @@ import pers.fulsun.hexoadmin.api.user.response.UserQueryResponse;
 import pers.fulsun.hexoadmin.api.user.response.data.UserInfo;
 import pers.fulsun.hexoadmin.api.user.service.UserFacadeService;
 import pers.fulsun.hexoadmin.user.domain.entity.User;
+import pers.fulsun.hexoadmin.user.domain.entity.convertor.UserConvertor;
 import pers.fulsun.hexoadmin.user.domain.service.UserService;
 
 @Service
@@ -39,11 +39,9 @@ public class UserFacadeServiceImpl implements UserFacadeService {
         response.setSuccess(true);
         response.setData(null);
         if (user != null) {
-            UserInfo userInfo = new UserInfo();
-            BeanUtil.copyProperties(user, userInfo);
-            userInfo.setUserId(user.getId());
-            response.setData(userInfo);
+            response.setData(UserConvertor.INSTANCE.mapToVo(user));
         }
+        response.setData(null);
         return response;
     }
     
