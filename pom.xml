@@ -13,12 +13,7 @@
     <modules>
         <module>hexo-admin-auth</module>
         <module>hexo-admin-common</module>
-        <module>hexo-admin-common/hexo-admin-base</module>
-        <module>hexo-admin-common/hexo-admin-web</module>
-        <module>hexo-admin-common/hexo-admin-api</module>
         <module>hexo-admin-business</module>
-        <module>hexo-admin-business/hexo-admin-user</module>
-        <module>hexo-admin-common/hexo-admin-datasource</module>
     </modules>
 
     <properties>

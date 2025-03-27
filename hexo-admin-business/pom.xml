@@ -12,6 +12,9 @@
     </parent>
 
     <artifactId>hexo-admin-business</artifactId>
+    <modules>
+        <module>hexo-admin-user</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>

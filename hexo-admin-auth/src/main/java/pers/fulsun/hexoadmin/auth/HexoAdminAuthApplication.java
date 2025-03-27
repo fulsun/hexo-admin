@@ -7,5 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class HexoAdminAuthApplication {
     public static void main(String[] args) {
         SpringApplication.run(HexoAdminAuthApplication.class, args);
+        System.out.println("HexoAdminAuthApplication started");
     }
 }

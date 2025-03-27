@@ -32,7 +32,10 @@
             <groupId>pers.fulsun</groupId>
             <artifactId>hexo-admin-datasource</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>pers.fulsun</groupId>
+            <artifactId>hexo-admin-api</artifactId>
+        </dependency>
         <dependency>
             <groupId>pers.fulsun</groupId>
             <artifactId>hexo-admin-api</artifactId>

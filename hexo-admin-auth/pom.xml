@@ -23,11 +23,12 @@
     <dependencies>
         <dependency>
             <groupId>pers.fulsun</groupId>
-            <artifactId>hexo-admin-web</artifactId>
+            <artifactId>hexo-admin-user</artifactId>
         </dependency>
         <dependency>
             <groupId>pers.fulsun</groupId>
-            <artifactId>hexo-admin-api</artifactId>
+            <artifactId>hexo-admin-datasource</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>
