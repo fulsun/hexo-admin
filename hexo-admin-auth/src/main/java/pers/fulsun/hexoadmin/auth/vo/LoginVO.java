@@ -1,6 +1,8 @@
 package pers.fulsun.hexoadmin.auth.vo;
 
+import cn.hutool.extra.tokenizer.TokenizerUtil;
 import lombok.Data;
+import pers.fulsun.hexoadmin.api.user.response.data.UserInfo;
 
 import java.io.Serializable;
 @Data
@@ -20,4 +22,8 @@ public class LoginVO implements Serializable {
      */
     private Long tokenExpiration;
 
+
+    public LoginVO(UserInfo userInfo) {
+        this.userId = userInfo.getUserId().toString();
+    }
 }

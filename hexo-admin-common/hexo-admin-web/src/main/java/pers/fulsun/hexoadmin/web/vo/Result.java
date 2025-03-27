@@ -3,6 +3,8 @@ package pers.fulsun.hexoadmin.web.vo;
 import lombok.Getter;
 import lombok.Setter;
 
+import static pers.fulsun.hexoadmin.base.response.ResponseCode.SUCCESS;
+
 /**
  *
  */
@@ -29,12 +31,22 @@ public class Result<T> {
      */
     private T data;
 
+    public Result() {
+    }
+
+    public Result(Boolean success, String code, String message, T data) {
+        this.success = success;
+        this.message = message;
+        this.data = data;
+        this.code = code;
+    }
+
+
     public static <T> Result<T> success(T data) {
-        Result result = new Result<>();
-        result.setSuccess(true);
-        result.setCode("200");
-        result.setMessage("success");
-        result.setData(data);
-        return result;
+        return new Result<>(true, SUCCESS.name(), SUCCESS.name(), data);
+    }
+
+    public static <T> Result<T> error(String errorCode, String errorMsg) {
+        return new Result<>(false, errorCode, errorMsg, null);
     }
 }

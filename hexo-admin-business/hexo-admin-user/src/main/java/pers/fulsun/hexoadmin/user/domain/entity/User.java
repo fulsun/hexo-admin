@@ -1,5 +1,6 @@
 package pers.fulsun.hexoadmin.user.domain.entity;
 
+import cn.hutool.crypto.digest.DigestUtil;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Getter;
@@ -87,4 +88,14 @@ public class User extends BaseEntity {
      */
     private UserRole userRole;
 
+    public User register(String telephone, String nickName, String password, String inviteCode, String inviterId) {
+        this.setTelephone(telephone);
+        this.setNickName(nickName);
+        this.setPasswordHash(DigestUtil.md5Hex(password));
+        this.setState(UserStateEnum.INIT);
+        this.setUserRole(UserRole.CUSTOMER);
+        this.setInviteCode(inviteCode);
+        this.setInviterId(inviterId);
+        return this;
+    }
 }
