@@ -41,7 +41,6 @@ public class UserFacadeServiceImpl implements UserFacadeService {
         if (user != null) {
             response.setData(UserConvertor.INSTANCE.mapToVo(user));
         }
-        response.setData(null);
         return response;
     }
     

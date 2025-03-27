@@ -64,6 +64,9 @@ public class AuthController {
                 LoginVO loginVO = new LoginVO(userInfo);
                 return Result.success(loginVO);
             }
+        } catch (BizException e) {
+            log.error("登录失败", e);
+            throw e;
         } catch (Exception e) {
             log.error("登录失败", e);
             throw new BizException(UserErrorCode.USER_OPERATE_FAILED);
