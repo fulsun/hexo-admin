@@ -120,6 +120,11 @@
                 <artifactId>mapstruct</artifactId>
                 <version>1.6.3</version>
             </dependency>
+            <dependency>
+                <groupId>pers.fulsun</groupId>
+                <artifactId>hexo-admin-sa-token</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     

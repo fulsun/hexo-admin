@@ -5,13 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>pers.fulsun</groupId>
-        <artifactId>hexo-admin</artifactId>
+        <artifactId>hexo-admin-common</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     
-    <groupId>pers.fulsun</groupId>
-    <artifactId>hexo-admin-auth</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>hexo-admin-sa-token</artifactId>
     
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -21,22 +19,14 @@
     
     <dependencies>
         <dependency>
-            <groupId>pers.fulsun</groupId>
-            <artifactId>hexo-admin-user</artifactId>
+            <groupId>cn.dev33</groupId>
+            <artifactId>sa-token-spring-boot3-starter</artifactId>
+            <version>1.37.0</version>
         </dependency>
+        
         <dependency>
-            <groupId>pers.fulsun</groupId>
-            <artifactId>hexo-admin-datasource</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>pers.fulsun</groupId>
-            <artifactId>hexo-admin-opendoc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>pers.fulsun</groupId>
-            <artifactId>hexo-admin-sa-token</artifactId>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
         </dependency>
     </dependencies>
-
-
 </project>

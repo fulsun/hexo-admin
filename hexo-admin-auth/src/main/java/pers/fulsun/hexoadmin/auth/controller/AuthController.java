@@ -1,5 +1,7 @@
 package pers.fulsun.hexoadmin.auth.controller;
 
+import cn.dev33.satoken.stp.SaLoginModel;
+import cn.dev33.satoken.stp.StpUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -30,6 +32,11 @@ import pers.fulsun.hexoadmin.web.vo.Result;
 @Slf4j
 public class AuthController {
     
+    /**
+     * 默认登录超时时间：7天
+     */
+    private static final Integer DEFAULT_LOGIN_SESSION_TIMEOUT = 60 * 60 * 24 * 7;
+    
     @Autowired
     private UserFacadeService userFacadeService;
     
@@ -55,12 +62,19 @@ public class AuthController {
                 if (response.getSuccess()) {
                     userQueryResponse = userFacadeService.query(userQueryRequest);
                     userInfo = userQueryResponse.getData();
+                    StpUtil.login(userInfo.getUserId(),
+                            new SaLoginModel().setIsLastingCookie(loginParam.getRememberMe())
+                                    .setTimeout(DEFAULT_LOGIN_SESSION_TIMEOUT));
+                    StpUtil.getSession().set(userInfo.getUserId().toString(), userInfo);
                     LoginVO loginVO = new LoginVO(userInfo);
                     return Result.success(loginVO);
                 }
                 return Result.error(response.getResponseCode(), response.getResponseMessage());
             } else {
                 // 登录
+                StpUtil.login(userInfo.getUserId(), new SaLoginModel().setIsLastingCookie(loginParam.getRememberMe())
+                        .setTimeout(DEFAULT_LOGIN_SESSION_TIMEOUT));
+                StpUtil.getSession().set(userInfo.getUserId().toString(), userInfo);
                 LoginVO loginVO = new LoginVO(userInfo);
                 return Result.success(loginVO);
             }

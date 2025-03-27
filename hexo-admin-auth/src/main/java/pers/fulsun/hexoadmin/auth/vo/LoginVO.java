@@ -1,5 +1,6 @@
 package pers.fulsun.hexoadmin.auth.vo;
 
+import cn.dev33.satoken.stp.StpUtil;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import pers.fulsun.hexoadmin.api.user.response.data.UserInfo;
@@ -30,8 +31,9 @@ public class LoginVO implements Serializable {
     @Schema(description = "令牌过期时间")
     private Long tokenExpiration;
     
-    
     public LoginVO(UserInfo userInfo) {
         this.userId = userInfo.getUserId().toString();
+        this.token = StpUtil.getTokenValue();
+        this.tokenExpiration = StpUtil.getTokenSessionTimeout();
     }
 }

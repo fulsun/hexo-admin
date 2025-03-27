@@ -19,6 +19,7 @@
         <module>hexo-admin-api</module>
         <module>hexo-admin-datasource</module>
         <module>hexo-admin-opendoc</module>
+        <module>hexo-admin-sa-token</module>
     </modules>
     
     <properties>
