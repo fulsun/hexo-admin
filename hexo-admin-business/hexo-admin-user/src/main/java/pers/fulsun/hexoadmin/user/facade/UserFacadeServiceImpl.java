@@ -1,5 +1,6 @@
 package pers.fulsun.hexoadmin.user.facade;
 
+import cn.hutool.core.bean.BeanUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pers.fulsun.hexoadmin.api.user.request.UserQueryRequest;
@@ -34,7 +35,16 @@ public class UserFacadeServiceImpl implements UserFacadeService {
                 throw new UnsupportedOperationException(
                         userQueryRequest.getUserQueryCondition() + "'' is not supported");
         };
-        return null;
+        UserQueryResponse<UserInfo> response = new UserQueryResponse();
+        response.setSuccess(true);
+        response.setData(null);
+        if (user != null) {
+            UserInfo userInfo = new UserInfo();
+            BeanUtil.copyProperties(user, userInfo);
+            userInfo.setUserId(user.getId());
+            response.setData(userInfo);
+        }
+        return response;
     }
     
     @Override

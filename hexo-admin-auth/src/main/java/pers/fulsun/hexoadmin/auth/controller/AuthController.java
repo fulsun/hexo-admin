@@ -20,6 +20,8 @@ import pers.fulsun.hexoadmin.api.user.response.data.UserInfo;
 import pers.fulsun.hexoadmin.api.user.service.UserFacadeService;
 import pers.fulsun.hexoadmin.auth.vo.LoginParam;
 import pers.fulsun.hexoadmin.auth.vo.LoginVO;
+import pers.fulsun.hexoadmin.base.exception.BizException;
+import pers.fulsun.hexoadmin.user.infrastructure.exception.UserErrorCode;
 import pers.fulsun.hexoadmin.web.vo.Result;
 
 @Tag(name = "AuthController", description = "后台授权管理")
@@ -38,30 +40,35 @@ public class AuthController {
     @ApiResponse(responseCode = "200", description = "登录成功", content = @Content(schema = @Schema(implementation = Result.class)))
     @PostMapping("/login")
     public Result<LoginVO> login(@Valid @RequestBody LoginParam loginParam) {
-        // 判断是注册还是登陆
-        // 查询用户信息
-        UserQueryRequest userQueryRequest = new UserQueryRequest(loginParam.getTelephone());
-        UserQueryResponse<UserInfo> userQueryResponse = userFacadeService.query(userQueryRequest);
-        UserInfo userInfo = userQueryResponse.getData();
-        if (userInfo == null) {
-            // 需要注册
-            UserRegisterRequest userRegisterRequest = new UserRegisterRequest();
-            userRegisterRequest.setTelephone(loginParam.getTelephone());
-            userRegisterRequest.setInviteCode(loginParam.getInviteCode());
-            
-            UserOperatorResponse response = userFacadeService.register(userRegisterRequest);
-            if (response.getSuccess()) {
-                userQueryResponse = userFacadeService.query(userQueryRequest);
-                userInfo = userQueryResponse.getData();
+        try {
+            // 查询用户信息
+            UserQueryRequest userQueryRequest = new UserQueryRequest(loginParam.getTelephone());
+            UserQueryResponse<UserInfo> userQueryResponse = userFacadeService.query(userQueryRequest);
+            UserInfo userInfo = userQueryResponse.getData();
+            if (userInfo == null) {
+                // 需要注册
+                UserRegisterRequest userRegisterRequest = new UserRegisterRequest();
+                userRegisterRequest.setTelephone(loginParam.getTelephone());
+                userRegisterRequest.setInviteCode(loginParam.getInviteCode());
+                
+                UserOperatorResponse response = userFacadeService.register(userRegisterRequest);
+                if (response.getSuccess()) {
+                    userQueryResponse = userFacadeService.query(userQueryRequest);
+                    userInfo = userQueryResponse.getData();
+                    LoginVO loginVO = new LoginVO(userInfo);
+                    return Result.success(loginVO);
+                }
+                return Result.error(response.getResponseCode(), response.getResponseMessage());
+            } else {
+                // 登录
                 LoginVO loginVO = new LoginVO(userInfo);
                 return Result.success(loginVO);
             }
-            return Result.error(response.getResponseCode(), response.getResponseMessage());
-        } else {
-            // 登录
-            LoginVO loginVO = new LoginVO(userInfo);
-            return Result.success(loginVO);
+        } catch (Exception e) {
+            log.error("登录失败", e);
+            throw new BizException(UserErrorCode.USER_OPERATE_FAILED);
         }
+        
     }
     
 }

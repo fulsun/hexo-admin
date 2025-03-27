@@ -14,8 +14,6 @@
         INVITER_ID,
         LAST_LOGIN_TIME,
         PROFILE_PHOTO_URL,
-        BLOCK_CHAIN_URL,
-        BLOCK_CHAIN_PLATFORM,
         CERTIFICATION,
         REAL_NAME,
         ID_CARD_NO,
@@ -84,7 +82,7 @@
     <select id="findByInviteCode" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from users where deleted=0select * from users where deleted=0
+        from users where deleted=0
         <if test="inviteCode!=null">AND invite_code = #{inviteCode}</if>
     </select>
 </mapper>
