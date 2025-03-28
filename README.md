@@ -1,5 +1,7 @@
 # Hexo博客管理系统
 
+前端项目地址：https://github.com/hexojs/hexo-admin-web
+
 ## 项目概述
 
 基于Spring Boot构建的现代化博客管理系统，提供文章管理、图片管理、评论审核等后台管理功能，前端采用AdminLTE管理模板。

@@ -26,7 +26,7 @@ import pers.fulsun.hexoadmin.base.exception.BizException;
 import pers.fulsun.hexoadmin.user.infrastructure.exception.UserErrorCode;
 import pers.fulsun.hexoadmin.web.vo.Result;
 
-@Tag(name = "AuthController", description = "后台授权管理")
+@Tag(name = "auth", description = "后台授权管理")
 @RestController
 @RequestMapping("auth")
 @Slf4j
@@ -88,4 +88,9 @@ public class AuthController {
         
     }
     
+    @PostMapping("/logout")
+    public Result<Boolean> logout() {
+        StpUtil.logout();
+        return Result.success(true);
+    }
 }
