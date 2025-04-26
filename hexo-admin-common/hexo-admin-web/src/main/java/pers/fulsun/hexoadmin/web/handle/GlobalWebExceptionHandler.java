@@ -18,6 +18,7 @@ public class GlobalWebExceptionHandler {
     /**
      * 处理参数验证异常
      */
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleMethodArgumentNotValid(MethodArgumentNotValidException ex) {
         Map<String, String> errors = new HashMap<>();
