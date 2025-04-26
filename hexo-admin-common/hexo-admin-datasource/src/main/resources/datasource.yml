@@ -3,9 +3,9 @@ spring:
     exclude:
       - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
   datasource:
-    url: jdbc:mysql://192.168.61.110:3306/hexo_admin?createDatabaseIfNotExist=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
-    username: admin
-    password: StrongPassword123!
+    url: jdbc:mysql://127.0.0.1:3306/hexo_admin?createDatabaseIfNotExist=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
