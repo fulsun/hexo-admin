@@ -6,6 +6,7 @@ import lombok.Data;
 import pers.fulsun.hexoadmin.api.user.response.data.UserInfo;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @Data
 @Schema(description = "登录返回值")
@@ -17,7 +18,7 @@ public class LoginVO implements Serializable {
      * 用户标识，如用户ID
      */
     @Schema(description = "用户标识，如用户ID")
-    private String userId;
+    private Long userId;
     
     /**
      * 访问令牌
@@ -31,9 +32,41 @@ public class LoginVO implements Serializable {
     @Schema(description = "令牌过期时间")
     private Long tokenExpiration;
     
+    
+    /**
+     * 用户昵称
+     */
+    private String nickName;
+    
+    /**
+     * 手机号码
+     */
+    private String telephone;
+    
+    
+    /**
+     * 用户状态（ACTIVE，FROZEN）
+     */
+    private String state;
+    
+    /**
+     * 最后登录时间
+     */
+    private Date lastLoginTime;
+    
+    /**
+     * 用户角色
+     */
+    private String userRole;
+    
     public LoginVO(UserInfo userInfo) {
-        this.userId = userInfo.getUserId().toString();
+        this.userId = userInfo.getUserId();
+        this.nickName = userInfo.getNickName();
+        this.telephone = userInfo.getTelephone();
+        this.state = userInfo.getState();
+        this.lastLoginTime = userInfo.getLastLoginTime();
+        this.userRole = userInfo.getUserRole();
         this.token = StpUtil.getTokenValue();
-        this.tokenExpiration = StpUtil.getTokenSessionTimeout();
+        this.tokenExpiration = StpUtil.getTokenTimeout();
     }
 }

@@ -23,4 +23,13 @@ public interface UserFacadeService {
      * @return
      */
     UserOperatorResponse register(UserRegisterRequest userRegisterRequest);
+    
+    /**
+     * 验证密码
+     *
+     * @param userId   用户ID
+     * @param password 密码
+     * @return true/false
+     */
+    boolean checkPassword(Long userId, String password);
 }

@@ -3,10 +3,9 @@ package pers.fulsun.hexoadmin.api.user.response.data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pers.fulsun.hexoadmin.api.user.constant.UserRole;
-import pers.fulsun.hexoadmin.api.user.constant.UserStateEnum;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -21,50 +20,29 @@ public class UserInfo implements Serializable {
     private Long userId;
     
     /**
-     * 昵称
+     * 用户昵称
      */
     private String nickName;
     
     /**
-     * 手机号
+     * 手机号码
      */
     private String telephone;
     
+    
     /**
-     * 状态
-     *
-     * @see UserStateEnum
+     * 用户状态（ACTIVE，FROZEN）
      */
     private String state;
     
     /**
-     * 头像地址
+     * 最后登录时间
      */
-    private String profilePhotoUrl;
-    
-    /**
-     * 区块链地址
-     */
-    private String blockChainUrl;
-    
-    /**
-     * 区块链平台
-     */
-    private String blockChainPlatform;
-    
-    /**
-     * 实名认证
-     */
-    private Boolean certification;
+    private Date lastLoginTime;
     
     /**
      * 用户角色
      */
-    private UserRole userRole;
-    
-    /**
-     * 邀请码
-     */
-    private String inviteCode;
+    private String userRole;
 }
 

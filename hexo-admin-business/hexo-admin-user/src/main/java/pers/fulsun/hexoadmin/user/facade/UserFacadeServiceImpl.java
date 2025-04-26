@@ -14,6 +14,7 @@ import pers.fulsun.hexoadmin.api.user.service.UserFacadeService;
 import pers.fulsun.hexoadmin.user.domain.entity.Users;
 import pers.fulsun.hexoadmin.user.domain.entity.convertor.UserConvertor;
 import pers.fulsun.hexoadmin.user.domain.service.UserService;
+import pers.fulsun.hexoadmin.user.infrastructure.util.AesUtil;
 
 @Service
 public class UserFacadeServiceImpl implements UserFacadeService {
@@ -47,5 +48,14 @@ public class UserFacadeServiceImpl implements UserFacadeService {
     @Override
     public UserOperatorResponse register(UserRegisterRequest userRegisterRequest) {
         return userService.register(userRegisterRequest.getTelephone(), userRegisterRequest.getPassword());
+    }
+    
+    @Override
+    public boolean checkPassword(Long userId, String password) {
+        Users user = userService.findById(userId);
+        if (user.getPasswordHash() == null) {
+            return false;
+        }
+        return AesUtil.decrypt(user.getPasswordHash()).equals(password);
     }
 }

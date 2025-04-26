@@ -6,8 +6,9 @@ public enum AuthErrorCode implements ErrorCode {
     /**
      * 用户未登录
      */
-    USER_NOT_LOGIN("USER_NOT_LOGIN", "用户未登录");
+    USER_NOT_LOGIN("USER_NOT_LOGIN", "用户未登录"),
     
+    USER_LOGIN_FAILED("USER_LOGIN_FAILED", "登录校验失败");
     private String code;
     
     private String message;
