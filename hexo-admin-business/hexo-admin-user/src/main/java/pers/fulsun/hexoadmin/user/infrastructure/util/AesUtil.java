@@ -23,7 +23,7 @@ public class AesUtil {
     
     private static final int KEY_SIZE = 256; // 128, 192 or 256
     
-    private static String key = "nSvYcupxmacthQ5VBbYwlFkHm8+4EYwK5w43OlN/Rs8=";
+    private static final String key = "nSvYcupxmacthQ5VBbYwlFkHm8+4EYwK5w43OlN/Rs8=";
     
     /**
      * 生成 AES 密钥

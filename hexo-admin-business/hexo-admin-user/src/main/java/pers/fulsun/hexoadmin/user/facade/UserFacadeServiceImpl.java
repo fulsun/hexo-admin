@@ -11,7 +11,7 @@ import pers.fulsun.hexoadmin.api.user.response.UserOperatorResponse;
 import pers.fulsun.hexoadmin.api.user.response.UserQueryResponse;
 import pers.fulsun.hexoadmin.api.user.response.data.UserInfo;
 import pers.fulsun.hexoadmin.api.user.service.UserFacadeService;
-import pers.fulsun.hexoadmin.user.domain.entity.User;
+import pers.fulsun.hexoadmin.user.domain.entity.Users;
 import pers.fulsun.hexoadmin.user.domain.entity.convertor.UserConvertor;
 import pers.fulsun.hexoadmin.user.domain.service.UserService;
 
@@ -23,7 +23,7 @@ public class UserFacadeServiceImpl implements UserFacadeService {
     
     @Override
     public UserQueryResponse<UserInfo> query(UserQueryRequest userQueryRequest) {
-        User user = switch (userQueryRequest.getUserQueryCondition()) {
+        Users user = switch (userQueryRequest.getUserQueryCondition()) {
             case UserIdQueryCondition userIdQueryCondition:
                 yield userService.findById(userIdQueryCondition.getUserId());
             case UserPhoneQueryCondition userPhoneQueryCondition:
@@ -46,6 +46,6 @@ public class UserFacadeServiceImpl implements UserFacadeService {
     
     @Override
     public UserOperatorResponse register(UserRegisterRequest userRegisterRequest) {
-        return userService.register(userRegisterRequest.getTelephone(), userRegisterRequest.getInviteCode());
+        return userService.register(userRegisterRequest.getTelephone(), userRegisterRequest.getPassword());
     }
 }

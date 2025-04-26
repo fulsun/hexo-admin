@@ -10,7 +10,6 @@ import lombok.Setter;
 @Getter
 @Schema(description = "注册参数")
 public class RegisterParam {
-    
     /**
      * 手机号
      */
@@ -30,7 +29,7 @@ public class RegisterParam {
      * 验证码
      */
     @Schema(description = "验证码")
-    @NotBlank(message = "验证码不能为空")
+    // @NotBlank(message = "验证码不能为空")
     private String captcha;
     
     /**

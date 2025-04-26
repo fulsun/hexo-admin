@@ -5,7 +5,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.factory.Mappers;
 import pers.fulsun.hexoadmin.api.user.response.data.UserInfo;
-import pers.fulsun.hexoadmin.user.domain.entity.User;
+import pers.fulsun.hexoadmin.user.domain.entity.Users;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public interface UserConvertor {
      * @return
      */
     @Mapping(target = "userId", source = "request.id")
-    public UserInfo mapToVo(User request);
+    public UserInfo mapToVo(Users request);
     
     /**
      * 转换为实体
@@ -30,7 +30,7 @@ public interface UserConvertor {
      * @return
      */
     @Mapping(target = "id", source = "request.userId")
-    public User mapToEntity(UserInfo request);
+    public Users mapToEntity(UserInfo request);
     
     /**
      * 转换为VO
@@ -39,5 +39,5 @@ public interface UserConvertor {
      * @return
      */
     @Mapping(target = "id", source = "request.userId")
-    public List<UserInfo> mapToVo(List<User> request);
+    public List<UserInfo> mapToVo(List<Users> request);
 }

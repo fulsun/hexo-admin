@@ -4,30 +4,33 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import jakarta.validation.constraints.NotNull;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import pers.fulsun.hexoadmin.user.domain.entity.User;
+import pers.fulsun.hexoadmin.user.domain.entity.Users;
 
 /**
- * 用户表 Mapper 接口
+ * 用户信息表(users)数据Mapper
+ *
+ * @author fulsun
+ * @description 由 Mybatisplus Code Generator 创建
+ * @since 2025-04-26 15:41:19
  */
 @Mapper
-public interface UserMapper extends BaseMapper<User> {
-    
+public interface UsersMapper extends BaseMapper<Users> {
     /**
      * 根据id查询用户
      *
      * @param id
      * @return
      */
-    User findById(@Param("id") long id);
-    
+    Users findById(@Param("id") long id);
+
     /**
      * 根据手机号查询用户
      *
      * @param telephone
      * @return
      */
-    User findByTelephone(@NotNull @Param("telephone") String telephone);
-    
+    Users findByTelephone(@NotNull @Param("telephone") String telephone);
+
     /**
      * 根据昵称和密码查询用户
      *
@@ -35,22 +38,13 @@ public interface UserMapper extends BaseMapper<User> {
      * @param passwordHash
      * @return
      */
-    User findByTelephoneAndPass(@Param("telephone") String telephone, @Param("passwordHash") String passwordHash);
-    
+    Users findByTelephoneAndPass(@Param("telephone") String telephone, @Param("passwordHash") String passwordHash);
+
     /**
      * 根据昵称查询用户
      *
      * @param nickname
      * @return
      */
-    User findByNickname(@NotNull @Param("nickName") String nickname);
-    
-    /**
-     * 根据邀请码查询用户
-     *
-     * @param inviteCode
-     * @return
-     */
-    User findByInviteCode(@NotNull @Param("inviteCode") String inviteCode);
-    
+    Users findByNickname(@NotNull @Param("nickName") String nickname);
 }
